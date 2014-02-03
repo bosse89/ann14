@@ -1,15 +1,15 @@
 clear
 nsepdata;
-hiddens=20;
+hiddens=10;
 %Encoder
-if true
+if false
 patterns = eye(8) * 2 - 1;
 targets = patterns;
 hiddens=3;
 %
 end
-epochs=20;
-eta=0.1;
+epochs=1000;
+eta=0.01;
 [insize, ndata] = size(patterns);
 [outsize, ndata] = size(targets);
 %first layer weights
