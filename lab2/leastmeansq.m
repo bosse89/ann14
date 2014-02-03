@@ -5,6 +5,6 @@ makerbf
 %m and var
 Phi = calcPhi(x,m,var);
 
-w=f\Phi;
+w=(f\Phi)';
 y=Phi*w;
 rbfplot1(x,y,f,units);
