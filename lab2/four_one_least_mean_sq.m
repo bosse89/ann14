@@ -1,9 +1,10 @@
-x = [0:0.1:2*pi]'; % inputs
-f=sin(2*x); % desired outputs
-units=2;
-%for units=56:56
+clear
+x = [0:0.1:2*pi]';%inputs
+f=sin(2*x);%desired outputs
+units=6;
+%for units=6:6
 for units=units:units
-    makerbf % output: m and var
+    makerbf %output: m and var
     Phi = calcPhi(x,m,var);
     w=Phi\f;
     y=Phi*w;
@@ -30,4 +31,4 @@ for xx=xapprox
     yapprox = [yapprox yy]
 end
 subplot(2,1,1); hold on;
-plot(xapprox,yapprox,'r+');
+plot(xapprox,yapprox,'r*');
