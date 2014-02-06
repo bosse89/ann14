@@ -1,5 +1,4 @@
 clear;
-plotinit;
 [xtrain ytrain] = readxy('ballist',2,2);
 [xtest ytest]   = readxy('balltest',2,2);
 
