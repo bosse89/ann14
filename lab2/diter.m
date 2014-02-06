@@ -45,5 +45,5 @@ title(['RBF-units=' int2str(units) ', ' alg ': log(error vs iter)']);
 subplot(3,1,2); plot(x,y,x,f);title('Function y and desired y');
 subplot(3,1,3); plot(x,f-y);
 title(['Residual, max= ' num2str(max(abs(f-y)))]);
-
+rvs=[rvs max(abs(f-y))];
 %Find the actual output by using the calculated weight vector
