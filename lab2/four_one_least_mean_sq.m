@@ -1,10 +1,11 @@
 clear
 x = [0:0.1:2*pi]';%inputs
 f=sin(2*x);%desired outputs
-units=6;
+units=5;
 %for units=6:6
 for units=units:units
     makerbf %output: m and var
+    m
     Phi = calcPhi(x,m,var);
     w=Phi\f;
     y=Phi*w;
@@ -23,12 +24,5 @@ end
 rbfplot1(x,y,f,units);
 
 % Display points roughly corresponding to the approximation.
-xapprox = [x(1):(x(end)-x(1))/(units-1):x(end)]
-yapprox = []
-for xx=xapprox
-    [amin,argmin] = min(abs(x-xx))
-    yy = f(argmin)
-    yapprox = [yapprox yy]
-end
 subplot(2,1,1); hold on;
-plot(xapprox,yapprox,'r*');
+plot(m',interp1(x,f,m),'r*');
