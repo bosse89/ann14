@@ -1,7 +1,7 @@
 clear
-x = [0:0.1:2*pi]';%inputs
-f=sin(2*x);%desired outputs
-units=63;
+x = [0:0.1:10]';%inputs
+f=sqrt(x);%desired outputs
+units=50;
 %for units=6:6
 for units=units:units
     makerbf %output: m and var
