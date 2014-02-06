@@ -1,11 +1,10 @@
 clear
 x = [0:0.1:2*pi]';%inputs
 f=sin(2*x);%desired outputs
-units=5;
+units=63;
 %for units=6:6
 for units=units:units
     makerbf %output: m and var
-    m
     Phi = calcPhi(x,m,var);
     w=Phi\f;
     y=Phi*w;
