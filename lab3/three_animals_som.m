@@ -12,10 +12,11 @@ fneighbours = neighbours;
 dneighbours = neighbours/epochs;
 m = 100;
 N = 84;
+t = 32;
 
 w = rand(m,N);
 for epoch = 1:epochs
-    for a = 1:32
+    for a = 1:t
         p = props(a,:);
         d = []; % Squared distances
         for i = 1:m
@@ -31,7 +32,7 @@ for epoch = 1:epochs
 end
 
 pos = [];
-for a = 1:32
+for a = 1:t
     p = props(a,:);
     d = [];
     for i = 1:m
