@@ -24,7 +24,7 @@ for epoch = 1:epochs
             d(i) = (p-w(i,:)) * (p-w(i,:))';% <== Correct???
         end
         [x,xi] = min(d);
-        for i = max(1,xi-neighbours):min(m,xi+neighbours)
+        for i = max(1,xi-neighbours):min(m*n,xi+neighbours)
             w(i,:) = w(i,:) + eta*( p-w(i,:) );
         end
     end
