@@ -10,17 +10,19 @@ epochs = 20;
 neighbours = 50;
 fneighbours = neighbours;
 dneighbours = neighbours/epochs;
+m = 100;
+N = 84;
 
-w = rand(100,84);
+w = rand(m,N);
 for epoch = 1:epochs
     for a = 1:32
         p = props(a,:);
-        d = [];
-        for i = 1:100
+        d = []; % Squared distances
+        for i = 1:m
             d(i) = (p-w(i,:)) * (p-w(i,:))';% <== Correct???
         end
         [x,xi] = min(d);
-        for i = max(1,xi-neighbours):min(100,xi+neighbours)
+        for i = max(1,xi-neighbours):min(m,xi+neighbours)
             w(i,:) = w(i,:) + eta*( p-w(i,:) );
         end
     end
@@ -32,7 +34,7 @@ pos = [];
 for a = 1:32
     p = props(a,:);
     d = [];
-    for i = 1:100
+    for i = 1:m
         d(i) = (p-w(i,:)) * (p-w(i,:))';% <== Correct???
     end
     [x,xi] = min(d);
