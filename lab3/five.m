@@ -15,6 +15,8 @@ n = 10; % # cols
 N = 31;  % # attributes (dimension)
 t = 349;  % # training samples
 
+two2one = vec2mat(1:m*n,m);
+
 w = rand(m*n,N);
 for epoch = 1:epochs
     for a = 1:t
@@ -24,8 +26,10 @@ for epoch = 1:epochs
             d(i) = (p-w(i,:)) * (p-w(i,:))';% <== Correct???
         end
         [x,xi] = min(d);
-        for i = max(1,xi-neighbours):min(m*n,xi+neighbours)
-            w(i,:) = w(i,:) + eta*( p-w(i,:) );
+        neighs = getNeighbours([m,n],p,dneighbours);
+        for pair = neighs'
+            i = two2one(pair(1),pair(2));
+            w(i,:) = w(i,:) + eta*p-w(i,:);
         end
     end
     fneighbours = fneighbours - dneighbours;
@@ -49,7 +53,6 @@ ypos = reshape(y,1,m*n)';
 
 a = ones(1,100)*350';
 a(pos) = 1:349;
-a'
 
 mpsexscript;
 mppartyscript;
