@@ -1,7 +1,7 @@
-% Coding: 0=no party, 1='m', 2='fp', 3='s', 4='v', 5='mp', 6='kd', 7='c'
+%Codn: 0=no party, 1='m', 2='fp',3='s', 4='v', 5='mp',6='kd',7='c'
 
-colormap([0 0 0; 0 0 1; 0 1 1; 1 0 1; 1 0 0; 0 1 0; 1 1 1; 1 1 0])
-
+  colormap([0 0 0; 0 0 1; 0 1 1; 1 0 1; 1 0 0; 0 1 0; 1 1 1; 1 1 0])
+%           black  blue   cyan   magn   red    green  white  yellow
 mpparty = [1
 	   2
 	   1
