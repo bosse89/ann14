@@ -51,8 +51,18 @@ a = ones(1,100)*350';
 a(pos) = 1:349;
 a'
 
-%mpsexscript;
+mpsexscript;
 mppartyscript;
-%mpdistrictscript;
+mpdistrictscript;
+
 p = [mpparty;0];
 image(p(reshape(a,10,10))+1)
+title('Party stats');
+figure
+p = [mpsex;0];
+image(p(reshape(a,10,10))+1)
+title('Gender stats');
+figure
+p = [mpdistrict;0];
+image(p(reshape(a,10,10))+1)
+title('District stats');
