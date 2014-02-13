@@ -15,12 +15,12 @@ n = 10; % # cols
 N = 31;  % # attributes (dimension)
 t = 349;  % # training samples
 
-w = rand(m,N);
+w = rand(m*n,N);
 for epoch = 1:epochs
     for a = 1:t
         p = votes(a,:);
         d = []; % Squared distances
-        for i = 1:m
+        for i = 1:m*n
             d(i) = (p-w(i,:)) * (p-w(i,:))';% <== Correct???
         end
         [x,xi] = min(d);
@@ -36,7 +36,7 @@ pos = [];
 for a = 1:t
     p = votes(a,:);
     d = [];
-    for i = 1:m
+    for i = 1:m*n
         d(i) = (p-w(i,:)) * (p-w(i,:))';% <== Correct???
     end
     [x,xi] = min(d);
