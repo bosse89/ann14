@@ -17,22 +17,10 @@ for epoch = 1:epochs
             d(i) = (c-w(i,:)) * (c-w(i,:))';% <== Correct???
         end
         [x,xi] = min(d);
-        if neighbours >= 3
-            i = cycle(xi-3,10);
+        for n = 1:neighbours
+            i = cycle(xi-n,10);
             w(i,:) = w(i,:) + eta*( c-w(i,:) );
-            i = cycle(xi+3,10);
-            w(i,:) = w(i,:) + eta*( c-w(i,:) );
-        end
-        if neighbours >= 2
-            i = cycle(xi-2,10);
-            w(i,:) = w(i,:) + eta*( c-w(i,:) );
-            i = cycle(xi+2,10);
-            w(i,:) = w(i,:) + eta*( c-w(i,:) );
-        end
-        if neighbours >= 1
-            i = cycle(xi-1,10);
-            w(i,:) = w(i,:) + eta*( c-w(i,:) );
-            i = cycle(xi+1,10);
+            i = cycle(xi+n,10);
             w(i,:) = w(i,:) + eta*( c-w(i,:) );
         end
         w(xi,:) = w(xi,:) + eta*( c-w(xi,:) );
