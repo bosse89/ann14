@@ -10,9 +10,11 @@ epochs = 20;
 neighbours = 50;
 fneighbours = neighbours;
 dneighbours = neighbours/epochs;
-m = 100;
-N = 84;
-t = 32;
+m = 100; % # output nodes
+N = 84;  % # attributes (dimension)
+t = 32;  % # training samples
+% props: 32 x 84
+% w: 100 x 84
 
 w = rand(m,N);
 for epoch = 1:epochs

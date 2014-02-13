@@ -1,7 +1,3 @@
-%
-%
-%
-
 clear;
 cities;
 
@@ -48,4 +44,3 @@ for epoch = 1:epochs
     plot(tour(:,1),tour(:,2),'b-*',city(:,1),city(:,2),'r+');
     pause(0.3);
 end
-
