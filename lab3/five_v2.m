@@ -5,6 +5,14 @@ votesscript;
 % mpparty: [349] -> [7]
 % mpdistrict: [349] -> [29]
 
+% Shuffle (dunno if it is neccessary)
+permutation = randperm(349)';
+tempvotes = votes;
+for i=permutation
+    tempvotes(i) = votes(i);
+end
+votes = tempvotes;
+
 eta = 0.4;
 epochs = 20;
 neighbours = 10;
@@ -40,10 +48,15 @@ end
 
 a = ones(1,100)*350';
 a(pos) = 1:349;
-
 mpsexscript;
 mppartyscript;
 mpdistrictscript;
+
+% We need to shuffle down here as well.
+mpsex = mpsex(permutation);
+mpparty = mpparty(permutation);
+mpdistrict = mpdistrict(permutation);
+
 figure(1);
 p = [mpparty;0];
 image(p(reshape(a,10,10))+1)

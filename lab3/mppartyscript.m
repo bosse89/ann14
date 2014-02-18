@@ -2,9 +2,10 @@
 
   colormap([0 0 0; 0 0 1; 0 1 1; 1 0 1; 1 0 0; 0 1 0; 1 1 1; 1 1 0])
 %           black  blue   cyan   magn   red    green  white  yellow
-mpparty = [1
-	   2
-	   1
+
+mpparty = [1 % ledamöt 1: moderat
+	   2     % ledamöt 2: folkpartist
+	   1     % ...
 	   1
 	   3
 	   1
