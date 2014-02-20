@@ -22,7 +22,7 @@ Xd = X;
 % Distort
 %distortion = [1 0 0 0 0 0 0 0]
 %Xd = vm(xor(t0(X),distortion(ones(1,3),:)));
-Xd = vm([1 0 1 0 1 0 0 1;1 1 0 0 0 1 0 0;1 1 1 0 1 1 0 1]);
+Xd = vm([1 0 1 0 1 0 0 1;1 1 0 0 0 1 0 0;1 1 1 0 1 1 0 1;1 1 1 0 1 1 1 0]);
 D = size(Xd,1); % Number of test patterns
 Xd
 % Initial distances
@@ -45,6 +45,7 @@ for update=1:maxupdates
         end
     end
     distances
+    
 end
 
 % If distances(i,j) == 0, row i in Xd corresponds to row j in X
