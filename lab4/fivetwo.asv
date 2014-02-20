@@ -38,9 +38,9 @@ for i = 1:1
     Xd = sgn(W*Xd')'
     subplot(2,2,2); 
     vis(Xd(1,:));
-    title('Recall from p11');
+    title('');
     subplot(2,2,4); 
     vis(Xd(2,:));
-    title('Recall from p22');
+    title('output2');
     %pause(1)
 end

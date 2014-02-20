@@ -1,4 +1,5 @@
-clear
+clear all
+close all
 pict
 
 X = vm([p1;p2;p3]);
@@ -32,15 +33,22 @@ subplot(3,2,4); vis(Xd(2,:));
 title('p22 mix of p2 & p3');
 %pause(1)
 figure(2);
-for i = 1:1
-    % Apply update rule
-    figure(2);
-    Xd = sgn(W*Xd')'
-    subplot(2,2,2); 
-    vis(Xd(1,:));
-    title('Recall from p11');
-    subplot(2,2,4); 
-    vis(Xd(2,:));
-    title('Recall from p22');
-    %pause(1)
+D=size(Xd,1);
+ri=randperm(1024);
+for i = 1:size(ri)
+    for j= 1:D        
+        % Apply update rule
+        figure(2);
+        Xd(j,:)=sgn(W(:,ri(i)).*Xd(j,:)')
+        %Xd = sgn(W(:,ri(i))*Xd')'
+        subplot(2,2,2); 
+        vis(Xd(1,:));
+        title('Recall from p11');
+        subplot(2,2,4); 
+        vis(Xd(2,:));
+        title('Recall from p22');
+        pause(0.5)
+        drawnow;
+        
+    end
 end
