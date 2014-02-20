@@ -21,23 +21,21 @@ Wij = Wij/N;
 
 % Testpatterns:
 Xd = X;
+% Distort
+%distortion = [1 0 0 0 0 0 0 0]
+%Xd = vm(xor(t0(X),distortion(ones(1,3),:)));
+Xd = [1 0 1 0 1 0 0 1;1 1 0 0 0 1 0 0;1 1 1 0 1 1 0 1];
 Xd
-
-% Distortions
-distortion = [0 0 0 0 0 0 1 0]
-Xd = vm(xor(t0(X),distortion(ones(1,3),:)))
-
-% Distances
+% Initial distances
 distances = abs(sum(sign(Xd-X),2))
 
-% Apply update rule
-updated = sgn(W*Xd')'
-
-for mu=1:P
-    if isequal(Xd(mu,:),X(mu,:))
-        disp(['Xd',num2str(mu),' == X',num2str(mu)])
+maxupdates = 10;
+for update=1:maxupdates
+    if isequal(distances,zeros(P,1))
+        break
     end
-    if isequal(updated(mu,:),X(mu,:))
-        disp(['updated',num2str(mu),' == X',num2str(mu)])
-    end
+    % Apply update rule
+    Xd = sgn(W*Xd')'
+    % Distances after updating
+    distances = abs(sum(sign(Xd-X),2))
 end
