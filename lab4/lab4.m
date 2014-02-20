@@ -48,3 +48,14 @@ for update=1:maxupdates
     end
     distances
 end
+
+% If distances(i,j) == 0, row i in Xd corresponds to row j in X
+for i=1:D
+    for j=1:P
+        if distances(i,j) == 0
+            correspondence(i) = j
+        end
+    end
+end
+correspondence
+
