@@ -1,5 +1,7 @@
-%X = vm([0 0 1 0 1 0 0 1;0 0 0 0 0 1 0 0;0 1 1 0 0 1 0 1]);
-X = vm([0 0 1 0 1 0 0 1])
+clear
+
+X = vm([0 0 1 0 1 0 0 1;0 0 0 0 0 1 0 0;0 1 1 0 0 1 0 1])
+%X = vm([0 0 1 0 1 0 0 1])
 N = size(X,2); % (?)
 P = size(X,1);
 W = X'*X
@@ -15,15 +17,20 @@ end
 %Wij = Wij/N;
 Wij
 
-test = X(1,:);
-test(1:5) = 1
-updated = sgn(Wij*test')'
+% W =/= Wij? Varför är det så?
+% W verkar vara den som funkar korrekt att uppdatera med.
+
+% Testpatterns:
+Xi = X;
+Xi(1,1) = 1; % En liten mutation för att se om det funkar ändå
+Xi
+updated = sgn(W*Xi')'
 
 for mu=1:P
-    if isequal(test,X(mu,:))
-        disp(['test and X',num2str(mu),' are equal'])
+    if isequal(X(mu,:),X(mu,:))
+        disp(['Xi',num2str(mu),' == X',num2str(mu)])
     end
-    if isequal(updated,X(mu,:))
-        disp(['updated and X',num2str(mu),' are equal'])
+    if isequal(updated(mu,:),X(mu,:))
+        disp(['updated',num2str(mu),' == X',num2str(mu)])
     end
 end
