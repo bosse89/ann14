@@ -2,8 +2,7 @@ clear
 pict
 
 X = vm(pics);
-%X = vm([0 0 1 0 1 0 0 1])
-N = size(X,2); % (?)
+N = size(X,2);
 P = size(X,1);
 W = X'*X;
 
@@ -16,9 +15,6 @@ for i=1:N
     end
 end
 Wij = Wij/N;
-
-% W =/= Wij? Varför är det så?
-% W verkar vara den som funkar korrekt att uppdatera med.
 
 % Testpatterns:
 Xd = [p11;p2];
