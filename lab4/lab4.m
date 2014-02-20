@@ -1,5 +1,6 @@
 clear
 
+% Attractors
 X = vm([0 0 1 0 1 0 0 1;0 0 0 0 0 1 0 0;0 1 1 0 0 1 0 1])
 %X = vm([0 0 1 0 1 0 0 1])
 N = size(X,2); % (?)
@@ -53,9 +54,9 @@ end
 for i=1:D
     for j=1:P
         if distances(i,j) == 0
-            correspondence(i) = j
+            correspondence(i) = j;
         end
     end
 end
-correspondence
+correspondence % The i:th test pattern corresponds to row correspondence(i) in X
 
