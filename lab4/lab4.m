@@ -40,7 +40,7 @@ initialdistances = distances
 maxupdates = 2;
 for update=1:maxupdates
     % Apply update rule
-    Xd = sgn(W*Xd')'
+    Xd = sgn(Wij*Xd')'
     % Distances after updating
     for i=1:D
         for j=1:P
