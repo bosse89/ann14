@@ -24,18 +24,38 @@ Xd = X;
 % Distort
 %distortion = [1 0 0 0 0 0 0 0]
 %Xd = vm(xor(t0(X),distortion(ones(1,3),:)));
-Xd = [1 0 1 0 1 0 0 1;1 1 0 0 0 1 0 0;1 1 1 0 1 1 0 1];
+Xd = vm([1 0 1 0 1 0 0 1;1 1 0 0 0 1 0 0;1 1 1 0 1 1 0 1]);
+D = size(Xd,1); % Number of test patterns
 Xd
 % Initial distances
-distances = abs(sum(sign(Xd-X),2))
-
-maxupdates = 10;
-for update=1:maxupdates
-    if isequal(distances,zeros(P,1))
-        break
+distances = zeros(D,P);
+for i=1:D
+    for j=1:P
+        distances(i,j) = sum(sign(abs(Xd(i,:)-X(j,:))),2);
     end
+end
+initialdistances = distances
+
+maxupdates = 2;
+for update=1:maxupdates
     % Apply update rule
     Xd = sgn(W*Xd')'
     % Distances after updating
-    distances = abs(sum(sign(Xd-X),2))
+    for i=1:D
+        for j=1:P
+            distances(i,j) = sum(sign(abs(Xd(i,:)-X(j,:))),2);
+        end
+    end
+    distances
 end
+
+% If distances(i,j) == 0, row i in Xd corresponds to row j in X
+for i=1:D
+    for j=1:P
+        if distances(i,j) == 0
+            correspondence(i) = j
+        end
+    end
+end
+correspondence
+
