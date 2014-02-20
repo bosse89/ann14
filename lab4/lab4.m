@@ -9,7 +9,7 @@ W = X'*X;
 for i=1:N
     for j=1:N
         Wij(i,j) = 0;
-        for mu=P
+        for mu=1:P
             Wij(i,j) = Wij(i,j)+X(mu,i)*X(mu,j);
         end
     end
