@@ -2,7 +2,7 @@ clear
 
 pict
 % Attractors
-X = [p1;p2;p3];
+X = [p4;p5;p6;p7];
 N = size(X,2);
 P = size(X,1);
 W = X'*X;
