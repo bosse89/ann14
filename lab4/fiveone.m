@@ -15,14 +15,14 @@ for i=1:N
         end
     end
 end
-Wij = Wij/N;
+Wij = Wij;
 
 % Testpatterns:
 Xd = X;
 % Distort
 %distortion = [1 0 0 0 0 0 0 0]
 %Xd = vm(xor(t0(X),distortion(ones(1,3),:)));
-Xd = vm([1 0 1 0 1 0 0 1;1 1 0 0 0 1 0 0;1 1 1 0 1 1 0 1;1 1 1 0 1 1 1 0]);
+Xd = vm([1 0 1 0 1 0 0 1;1 1 0 0 0 1 0 0;1 1 1 0 1 1 0 1;1 1 0 0 0 1 0 1]);
 D = size(Xd,1); % Number of test patterns
 Xd
 % Initial distances

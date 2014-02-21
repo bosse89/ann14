@@ -8,16 +8,6 @@ P = size(X,1);%patterns=3
 W = X'*X;
 W = p1'*p1 + p2'*p2 + p3'*p3; %learning first three
 
-for i=1:N
-    for j=1:N
-        Wij(i,j) = 0;
-        for mu=1:P
-            Wij(i,j) = Wij(i,j) + X(mu,i)*X(mu,j);
-        end
-    end
-end
-Wij = Wij/N;
-%W=W/N;
 figure(1);
 % Testpatterns:
 Xd = [p11;p22];
@@ -55,7 +45,6 @@ for i = 1:size(ri)
         %drawnow;
         E=[E energy(Xd,W)];
     end
-end
 end
 figure(3);
 plot(E');

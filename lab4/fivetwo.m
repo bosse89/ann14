@@ -6,7 +6,7 @@ X = [p1;p2;p3];
 N = size(X,2);%units =1024
 P = size(X,1);%patterns=3
 W = X'*X;
-%W = p1'*p1 + p2'*p2 + p3'*p3; %learning first three
+%W = p1'*p1+p2'*p2+p3'*p3; %learning first three
 
 for i=1:N
     for j=1:N
