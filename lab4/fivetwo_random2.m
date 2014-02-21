@@ -50,7 +50,7 @@ for i = 1:100
     vis(Xd(2,:));
     title('Recall from p22');
     %pause(0.1)
-    E=[E energy(Xd,W)];
+    E=[E -Xd(2,:)*W*Xd(2,:)'];
 end
 figure(3);
 plot(E');
