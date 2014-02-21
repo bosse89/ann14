@@ -1,7 +1,8 @@
-clear
+clear all
+close all
 pict
 
-X = vm([p1;p2;p3]);
+X = [p1;p2;p3];
 N = size(X,2);%units =1024
 P = size(X,1);%patterns=3
 W = X'*X;
@@ -36,16 +37,16 @@ E=[];
 for i = 1:10
     % Apply update rule
     figure(2);
-    Xd = sgn(W*Xd')'
+    Xd = sgn(W*Xd')';
     subplot(2,2,2); 
     vis(Xd(1,:));
     title('Recall from p11');
     subplot(2,2,4); 
     vis(Xd(2,:));
     title('Recall from p22');
-    %pause(1)
+    %pause(0.1)
     E=[E energy(Xd,W)];
 end
 figure(3);
-plot(E);
+plot(E');
 title('Energy');

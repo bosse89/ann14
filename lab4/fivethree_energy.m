@@ -1,7 +1,7 @@
 clear
 pict
 
-X = vm([p1;p2;p3]);
+X = [p1;p2;p3];
 N = size(X,2);%units =1024
 P = size(X,1);%patterns=3
 W = X'*X;

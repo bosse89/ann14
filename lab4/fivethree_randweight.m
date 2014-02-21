@@ -2,7 +2,7 @@ clear all
 close all
 pict
 
-X = vm([p1;p2;p3]);
+X = [p1;p2;p3];
 N = size(X,2);%units =1024
 P = size(X,1);%patterns=3
 W = X'*X;
@@ -18,6 +18,8 @@ for i=1:N
 end
 Wij = Wij/N;
 %W=W/N;
+W=randn(1024,1024);
+w=0.5*(W+W'); 
 figure(1);
 % Testpatterns:
 Xd = [p11;p22];
@@ -41,7 +43,7 @@ for i = 1:size(ri)
     for j= 1:D        
         % Apply update rule
         figure(2);
-        Xd(j,:)=sgn(W(:,ri(i)).*Xd(j,:)')
+        Xd(j,:)=sgn(W(:,ri(i)).*Xd(j,:)');
         %Xd = sgn(W(:,ri(i))*Xd')'
         subplot(2,2,2); 
         vis(Xd(1,:));
@@ -56,5 +58,5 @@ for i = 1:size(ri)
 end
 end
 figure(3);
-plot(E);
+plot(E');
 title('Energy');
