@@ -32,7 +32,8 @@ subplot(3,2,4); vis(Xd(2,:));
 title('p22 mix of p2 & p3');
 %pause(1)
 figure(2);
-for i = 1:1
+E=[];
+for i = 1:10
     % Apply update rule
     figure(2);
     Xd = sgn(W*Xd')'
@@ -43,4 +44,8 @@ for i = 1:1
     vis(Xd(2,:));
     title('Recall from p22');
     %pause(1)
+    E=[E energy(Xd,W)];
 end
+figure(3);
+plot(E);
+title('Energy');
