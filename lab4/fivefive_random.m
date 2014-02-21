@@ -66,7 +66,7 @@ for update=1:maxupdates
         break;
     end
 end
-stable = stable/P;
+stable = stable/D;
 
 % If distances(i,j) == 0, row i in Xd corresponds to row j in X
 correspondence = [];
