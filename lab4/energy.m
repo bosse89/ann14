@@ -10,5 +10,5 @@ for i= 1:nw
     end
     
 end
-e=[e ;su];
+e=[e ;-su];
 end
