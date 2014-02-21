@@ -1,4 +1,3 @@
-
 clear all
 close all
 pict
@@ -6,8 +5,10 @@ pict
 X = [p1;p2;p3];
 N = size(X,2);%units =1024
 P = size(X,1);%patterns=3
-W = X'*X;
+ro = sum(sum(X))/(N*P);
+W = (X-ro)'*(X-ro);
 %W = p1'*p1 + p2'*p2 + p3'*p3; %learning first three
+X = t0([p1;p2;p3]);
 
 for i=1:N
     for j=1:N
@@ -19,11 +20,9 @@ for i=1:N
 end
 Wij = Wij/N;
 %W=W/N;
-W=randn(1024,1024);
-%W=0.5*(W+W');
 figure(1);
 % Testpatterns:
-Xd = [p11;p22];
+Xd = t0([p11;p22]);
 subplot(3,2,1); vis(X(1,:));
 title('p1');
 subplot(3,2,3); vis(X(2,:));
@@ -39,25 +38,27 @@ figure(2);
 E=[];
 ri=randperm(1024);
 ri([1:10]);
-for i = 1:300
+phi=0:0.1:1
+phi=1;
+for i = 1:100
     ri=randperm(1024);
     subi=ri([1:100]);
-    %Xd = sgn(W*Xd')';
     % Apply update rule
+    figure(2);
+    tempXd = 0.5+0.5*sgn(W*Xd'-phi)';
+    Xd(:,subi)=tempXd(:,subi);
     
-    tempXd = sgn(W*Xd')';
-    Xd(subi)=tempXd(subi);
+    %Xd(1,:) = 0.5+0.5*sgn((W*Xd(1,:)')'-phi);
     
-    E=[E energy(Xd,W)];
+    subplot(2,2,2); 
+    vis(Xd(1,:));
+    title('Recall from p11');
+    subplot(2,2,4); 
+    vis(Xd(2,:));
+    title('Recall from p22');
+    %pause(0.1)
+    E=[E -Xd(1,:)*W*Xd(1,:)'];
 end
-figure(2);
-subplot(2,2,2); 
-vis(Xd(1,:));
-title('Recall from p11');
-subplot(2,2,4); 
-vis(Xd(2,:));
-title('Recall from p22');
-%pause(0.1)
 figure(3);
 plot(E');
 title('Energy');
