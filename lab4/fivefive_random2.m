@@ -1,6 +1,6 @@
 clear
 
-X = sgn(randn(600,200));
+X = sgn(randn(300,100));
 N = size(X,2);
 P = size(X,1);
 
@@ -15,6 +15,13 @@ for mu=1:P
         end
     end
     Xd = sgn(W*X')';
+    %kontroll = Xd-X
+    
+    for i=1:N
+        Xd(i,:) = flip(Xd(i,:),1); % Korrekt???
+    end
+    Xd(mu,:) = flip(Xd(mu,:),1);
+    
     for i=1:(mu-1)
         for j=1:(mu-1)
             distances(i,j) = sum(sign(abs(Xd(i,:)-X(j,:))),2);
@@ -23,6 +30,9 @@ for mu=1:P
     if mu == 1
         continue
     end
+    %X
+    %Xd
+    %X-Xd
     %distances
     stable(mu-1) = mu-1;
     for i=1:(mu-1)
