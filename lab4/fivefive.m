@@ -1,4 +1,5 @@
-clear
+clear all
+close all
 
 pict
 % Attractors

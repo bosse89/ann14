@@ -1,4 +1,5 @@
-clear
+clear all
+close all
 
 % Attractors
 X = vm([0 0 1 0 1 0 0 1;0 0 0 0 0 1 0 0;0 1 1 0 0 1 0 1])
@@ -23,8 +24,11 @@ Xd = X;
 %distortion = [1 0 0 0 0 0 0 0]
 %Xd = vm(xor(t0(X),distortion(ones(1,3),:)));
 Xd = vm([1 0 1 0 1 0 0 1;1 1 0 0 0 1 0 0;1 1 1 0 1 1 0 1;1 1 0 0 0 1 0 1]);
+n=8;
+Xd = dec2bin(0:2^n-1);
 D = size(Xd,1); % Number of test patterns
 Xd
+
 % Initial distances
 distances = zeros(D,P);
 for i=1:D

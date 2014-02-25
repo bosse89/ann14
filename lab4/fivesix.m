@@ -2,13 +2,13 @@ clear all
 close all
 pict
 
-X = [p1;p2;p3];
+X = t0([p1;p2;p3]);
 N = size(X,2);%units =1024
 P = size(X,1);%patterns=3
 ro = sum(sum(X))/(N*P);
 W = (X-ro)'*(X-ro);
 %W = p1'*p1 + p2'*p2 + p3'*p3; %learning first three
-X = t0([p1;p2;p3]);
+%X = t0([p1;p2;p3]);
 
 for i=1:N
     for j=1:N
@@ -37,14 +37,14 @@ title('p22 mix of p2 & p3');
 figure(2);
 E=[];
 ri=randperm(1024);
-ri([1:10]);
-phi=0:0.1:1
-phi=1;
-for i = 1:100
+%phi=0:0.1:1
+phi=119;
+for i = 1:5
     ri=randperm(1024);
     subi=ri([1:100]);
     % Apply update rule
     figure(2);
+    phi=sum(sum(W*Xd'))/(2*1024);
     tempXd = 0.5+0.5*sgn(W*Xd'-phi)';
     Xd(:,subi)=tempXd(:,subi);
     
