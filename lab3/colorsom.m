@@ -4,7 +4,7 @@ weights = rand(width,width,3); % i.e. colormap
 %input = [1 0 0;0 1 0];
 input = [1 0 0;0 0 1;0 1 0];
 eta = 0.025;
-epochs = 300;
+epochs = 200;
 
 imagesc(weights)
 pause(1)
@@ -34,7 +34,7 @@ for e=1:epochs
         %sqdiff
         %pause(1)
 
-        neighbours = getNeighbours([width width],[winnery,winnerx],radius)
+        neighbours = getNeighboursEuclidean([width width],[winnery,winnerx],radius)
 
         for n=neighbours'
             nx = n(1);
